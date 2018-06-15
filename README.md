@@ -21,6 +21,6 @@ Legend of annotations:
 
 ### Progress
 
-- [x] :running_man: select a game engine -> Phaser js
-- [x] :running_man: create a small protoype
-- [ ] set up ci with travis
+- [x] select a game engine -> Phaser js
+- [x] create a small protoype
+- [x] set up ci with travis
