@@ -15,8 +15,8 @@ script:
 
 branches:
   only:
-  - master
+    - master
 
 cache:
   directories:
-- $HOME/.npm
+    - $HOME/.npm
