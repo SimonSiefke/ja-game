@@ -1,3 +1,4 @@
+
 language: node_js
 
 node_js:
@@ -5,17 +6,12 @@ node_js:
 
 install:
   - npm install
+  - npm install -g firebase-tools
 
-before_deploy:
-  - npm install netlify-cli -g
+script:
   - npm run build
-
-deploy:
-  provider: script
-  script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p ./dist
-  skip_cleanup: true
-  on:
-    branch: master
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests.sh; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_master.sh; fi'
 
 branches:
   only:
@@ -23,4 +19,4 @@ branches:
 
 cache:
   directories:
-    - $HOME/.npm
+- $HOME/.npm
